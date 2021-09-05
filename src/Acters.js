@@ -28,9 +28,7 @@ const Acters = () => {
                         </div>
                     )
                 }
-
             </div>
-
         </div>
     );
 };

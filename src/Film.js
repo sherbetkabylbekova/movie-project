@@ -6,7 +6,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Trailers from "./Trailers";
-import ModalVideo from "react-modal-video";
+
 
 
 const Film = () => {
@@ -66,7 +66,6 @@ const Film = () => {
                                                  src={user.profile_path ? `https://image.tmdb.org/t/p/w500${user.profile_path}` : avatar}
                                                  alt=""/>
                                             <h6>{user.name}</h6>
-
                                         </Link>
                                     </div>
                                 )

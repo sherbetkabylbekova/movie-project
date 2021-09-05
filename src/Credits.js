@@ -28,9 +28,10 @@ const Credits = () => {
     return (
         <div className="container">
             <div className="row my-4">
-                    <div className="col-md-6 col-sm-6 mb-3">
-                        <img src={user.profile_path ? `https://image.tmdb.org/t/p/w500${user.profile_path}` : avatar} alt=""/>
-                    </div>
+                <div className="col-md-6 col-sm-6 mb-3">
+                    <img src={user.profile_path ? `https://image.tmdb.org/t/p/w500${user.profile_path}` : avatar}
+                         alt=""/>
+                </div>
                 <div className="col-md-6 col-sm-6 mb-3">
                     <h3 className="text-success text-center">{user.name} </h3>
                     <h6>Дата рождение: {user.birthday}</h6>
@@ -47,7 +48,9 @@ const Credits = () => {
                 {
                     films.slice(0, 8).map(film =>
                         <div key={film.id} className="col-md-3 col-sm-3 mb-3">
-                            <img className="credits-img" src={film.poster_path ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : poster} alt=""/>
+                            <img className="credits-img"
+                                 src={film.poster_path ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : poster}
+                                 alt=""/>
                             <h4>{film.title}</h4>
                         </div>
                     )
