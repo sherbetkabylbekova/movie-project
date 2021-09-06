@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useHistory, useParams} from "react-router-dom";
-import avatar from "./Images/avatar-anonymous-300x300.png";
+import avatar from "../Images/avatar-anonymous-300x300.png";
 import axios from "axios";
 
 const Acters = () => {
@@ -8,12 +8,12 @@ const Acters = () => {
     const [credits, setCredits] = useState([])
     const params = useParams()
     const history = useHistory()
-    useEffect(() =>{
+    useEffect(() => {
         axios(`https://api.themoviedb.org/3/movie/${params.id}/credits?&language=ru&api_key=${key}`)
             .then(({data}) => setCredits(data.cast))
-    },[params.id])
+    }, [params.id])
     return (
-        <div className="container">
+        <div className="container py-5">
             <button className="btn btn-info" onClick={() => history.goBack()}>Back</button>
             <div className="row my-4">
                 {

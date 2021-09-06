@@ -15,11 +15,12 @@ const MainPage = () => {
         setPage(num)
     }
     return (
-        <div className="container">
+        <div className="container py-5">
             {
                 Array(6).fill(0).map((el, index) =>
-                    <button className={`btn btn-info mx-1 ${page === index + 1 && "btn btn-success"}`} key={index + 1}
-                            onClick={() => handlePage(index + 1)}>{index + 1}</button>
+                    <button key={index + 1} onClick={() => handlePage(index + 1)}
+                            className={`btn btn-info mx-2 ${page === index + 1 && "btn-light"}`}
+                    >{index + 1}</button>
                 )
             }
             <div className="row my-4">

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {useHistory, useParams} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import poster from './Images/poster.png'
 import avatar from "./Images/avatar-anonymous-300x300.png"
 
@@ -18,6 +18,8 @@ const Credits = () => {
         axios(`https://api.themoviedb.org/3/person/${params.id}/movie_credits?&language=ru&api_key=${key}`)
             .then(({data: {cast}}) => setFilms(cast))
     }, [params.id])
+    const moviesbyDate = films.filter((el) => el.release_date).sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+    console.log(moviesbyDate)
     if (isloading) {
         return (
             <div className="spinner-border text-primary" role="status">
@@ -25,38 +27,51 @@ const Credits = () => {
             </div>
         )
     }
+
     return (
-        <div className="container">
-            <div className="row my-4">
-                <div className="col-md-6 col-sm-6 mb-3">
-                    <img src={user.profile_path ? `https://image.tmdb.org/t/p/w500${user.profile_path}` : avatar}
+        <div className="container py-5">
+            <div className="row my-2">
+                <div className="col-md-3 col-sm-3 mb-3">
+                    <img src={user.profile_path ? `https://image.tmdb.org/t/p/w200${user.profile_path}` : avatar}
                          alt=""/>
-                </div>
-                <div className="col-md-6 col-sm-6 mb-3">
-                    <h3 className="text-success text-center">{user.name} </h3>
-                    <h6>Дата рождение: {user.birthday}</h6>
+                    <h4>Персональная информация</h4>
+                    <h6>Дата рождения: {user.birthday}</h6>
                     <h6>Пол: {user.gender === 2 ? "мужчина" : "женщина"}</h6>
-                    <h6>Место рождение: {user.place_of_birth}</h6>
+                    <h6>Место рождения: {user.place_of_birth}</h6>
                     <h6>Популярность: {user.popularity}</h6>
-                    <p>Биография: {user.biography}</p>
                     <button className="btn btn-info" onClick={() => history.goBack()}>Back</button>
+                </div>
+                <div className="col-md-9 col-sm-9 mb-3">
+                    <h3 className="text-center">{user.name} </h3>
+                    <p>{user.biography}</p>
 
-
+                    <div className="row my-4">
+                        <h3>Известность за</h3>
+                        {
+                            films.slice(0, 8).map(film =>
+                                <div key={film.id} className="col-md-3 col-sm-3 mb-3">
+                                    <img className="credits-img"
+                                         src={film.poster_path ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : poster}
+                                         alt=""/>
+                                    <h4>{film.title}</h4>
+                                </div>
+                            )
+                        }
+                    </div>
+                    {
+                        <ul>
+                            <h3>Актерское исскуство </h3>
+                            {
+                                moviesbyDate.map(el =>
+                                    <Link to={`/film/${el.id}`}>
+                                        <li>{el.release_date.slice(0, 4)} {el.title}</li>
+                                    </Link>
+                                )
+                            }
+                        </ul>
+                    }
                 </div>
             </div>
-            <div className="row my-4">
-                {
-                    films.slice(0, 8).map(film =>
-                        <div key={film.id} className="col-md-3 col-sm-3 mb-3">
-                            <img className="credits-img"
-                                 src={film.poster_path ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : poster}
-                                 alt=""/>
-                            <h4>{film.title}</h4>
-                        </div>
-                    )
-                }
-            </div>
-
         </div>
     );
 };
