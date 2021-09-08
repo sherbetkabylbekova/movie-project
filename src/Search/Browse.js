@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link, useHistory, useParams} from "react-router-dom";
 
+
 const Browse = () => {
     const [search, setSearch] = useState([])
     const [error, setError] = useState("")
@@ -26,7 +27,7 @@ const Browse = () => {
                     search.map(el => (
                         <div className="col-md-3 col-sm-3 mb-3">
                             <Link to={`/film/${el.id}`}>
-                                <img src={`https://image.tmdb.org/t/p/w500${el.poster_path}`} alt="" width={250}/>
+                                <img src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}  alt="" width={250}/>
                                 <h4> {el.title}</h4>
                             </Link>
                         </div>

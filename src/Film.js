@@ -41,7 +41,7 @@ const Film = () => {
         <>
             <div className='background'
                  style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${film.backdrop_path}`}}/>
-            <div className="container py-5  ">
+            <div className="container py-5">
                 <div className="row minus-margin">
                     <div className="col-md-3 col-sm-3 mb-3">
                         <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="" className="film-img"/>
@@ -56,8 +56,11 @@ const Film = () => {
                         <h6>Язык: {film.language}</h6>
                         <h6>Сборы: {film.revenue.toLocaleString()}$</h6>
                         <h6>Страна:{film.production_countries.map(country => country.name, []).join()} </h6>
-                        <h6>Жанр: {film.genres.map((el) => el.name, []).join()} </h6>
+                        <div><h6>Жанр: {film.genres.map((el) => el.name, []).join()} </h6>
+                            <button className="btn btn-danger">Смoтреть</button></div>
+
                     </div>
+                    <h2>В главных ролях</h2>
                     {
                         !isloading && <OwlCarousel className="owl-theme my-4" margin={10} items={6}>
                             {

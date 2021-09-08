@@ -38,8 +38,9 @@ body {
 }
 
 .person-img {
-  width: 100%;
+  width: 156px;
   object-fit: contain;
+  height: 234px;
 }
 
 li {
@@ -67,5 +68,27 @@ header {
 
 }
 .minus-margin {
-  margin-top: -460px;
+  margin-top: -520px;
+}
+.hero{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.info{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 50px;
+}
+ul{
+  display: flex;
+  font-size: 25px;
+  margin-bottom: 4px;
+}
+ul li:not(:last-child){
+  margin-right: 20px;
 }

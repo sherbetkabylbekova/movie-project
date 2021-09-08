@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 const Search = () => {
     const [search, setSearch] = useState("")
@@ -17,10 +17,10 @@ const Search = () => {
     return (
         <div>
             <div className="d-flex align-items-center">
-                <input className="input-group-text" placeholder="Поиск" type="text" onChange={(e) =>
-                    setSearch(e.target.value)}
-                       onKeyPress={handleKeyPress}/>
-                <button className="btn btn-light mx-2" onClick={handleSearch}>Search</button>
+                    <input className="input-group-text " placeholder="Поиск" type="text" onChange={(e) =>
+                        setSearch(e.target.value)}
+                           onKeyPress={handleKeyPress}/>
+                    <button className="btn btn-warning mx-2" onClick={handleSearch}>Search</button>
             </div>
         </div>
     );
